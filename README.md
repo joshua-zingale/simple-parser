@@ -36,6 +36,7 @@ standard output. For example,
 or you can use a redirect to read from a file:
 (Run executable) || ./parser < test.txt 
 (OUTPUT)
+```bash
 good = one1 + two2 - three3 / four4 ;   --valid
 good = one1 / two2 * three3 ;   --valid
 good = one1 * two2 + three3 ;   --valid
@@ -58,6 +59,13 @@ bad + - delta   --syntax error, unexpected '-', expecting ID or '('
 bad / min = fourth ;   --syntax error, unexpected '=', expecting NEWLINE
 bad = a ! b   --syntax error, unexpected '!', expecting ';'
 bad * 2two + 3three   --syntax error, unexpected INTEGER, expecting ID or '('
+```
+(END OUTPUT)
+
+Therefore, to test my parser on an abritrary file 'file.txt', run
+```bash
+./parser < file.txt
+```
 
 ## DESIGN DECISIONS
 Input is received from standard input and ouput goes to standard output.
