@@ -70,6 +70,27 @@ Therefore, to test my parser on an abritrary file 'file.txt', run
 ./parser < file.txt
 ```
 
+## GRAMMAR
+Here is the grammar in BNF for a single statement, i.e. single line:
+```bash
+statement: expression  
+| assignment ';'  
+
+assignment: ID '=' expression 
+
+expression: term 
+| expression '+' term 
+| expression '-' term 
+
+term: factor
+| term '*' factor
+| term '/' factor
+| term '%' factor
+
+factor: ID 
+| '(' expression ')' 
+```
+
 ## DESIGN DECISIONS
 Input is received from standard input and ouput goes to standard output.
 This allows for flexability on the user's end, allowing him to redirect them
