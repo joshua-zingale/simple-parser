@@ -29,9 +29,11 @@ After the executable has been created (cf. with compile instructions),
 The parser executable may be run. The parser executable accepts to arguments.
 The parser functions by reading from standard input and then outputs to the
 standard output. For example,
+```bash
 (Run executable) || ./parser 
 (input string)   ||  three = one + two2;
 (output)         ||  three = one + two2;   --valid
+```
 
 or you can use a redirect to read from a file:
 (Run executable) || ./parser < test.txt 
