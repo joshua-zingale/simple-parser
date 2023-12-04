@@ -810,8 +810,12 @@ static int
 yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
                 yytype_int16 *yyssp, int yytoken, char yychar)
 {
+
+  // ADDITION: If undefined character causes error, print the character instead of '$undefined'
   char yyundefstr[] = {'\'', yychar, '\'','\0'};
   YYSIZE_T yysize0 = yytnamerr (YY_NULLPTR, yytoken == YYUNDEFTOK ? yyundefstr: yytname[yytoken]);
+  // END ADDITION
+  
   YYSIZE_T yysize = yysize0;
   enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };
   /* Internationalized format string. */
@@ -848,7 +852,11 @@ yysyntax_error (YYSIZE_T *yymsg_alloc, char **yymsg,
   if (yytoken != YYEMPTY)
     {
       int yyn = yypact[*yyssp];
+
+      // ADDITION: If undefined character causes error, print the character instead of '$undefined'
       yyarg[yycount++] = yytoken == YYUNDEFTOK ? yyundefstr: yytname[yytoken];
+      // END ADDITION
+      
       if (!yypact_value_is_default (yyn))
         {
           /* Start YYX at -YYN if negative to avoid negative indexes in

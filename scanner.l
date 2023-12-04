@@ -12,6 +12,7 @@
 \n                     {return NEWLINE;}
 [ \t]                  {printf("%s", yytext);} // print white space and move on.
 .                      {
+                           // Return all else for parsing in Bison script
                            printf("%s", yytext);
                            return *yytext;                       
                        }
