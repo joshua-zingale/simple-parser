@@ -31,8 +31,8 @@ The parser functions by reading from standard input and then outputs to the
 standard output. For example,
 ```bash
 (Run executable) || ./parser 
-(input string)   ||  three = one + two2;
-(output)         ||  three = one + two2;   --valid
+(input string) || three = one + two2;
+(output) || three = one + two2; --valid
 ```
 
 or you can use a redirect to read from a file:
@@ -41,28 +41,28 @@ or you can use a redirect to read from a file:
 ```bash
 (Run executable) || ./parser < test.txt 
 (OUTPUT)
-good = one1 + two2 - three3 / four4 ;   --valid
-good = one1 / two2 * three3 ;   --valid
-good = one1 * two2 + three3 ;   --valid
-good = ONE + twenty - three3 ;   --valid
-good = old * thirty2 / b567 ;   --valid
-good * i8766e98e + bignum   --valid
-good % a4 + bignum   --valid
-good * one - two2 / three3   --valid
-good = four4 * two2 * three3 ;   --valid
-good * (one + two) * three   --valid
-good * one + two * three / four - five + six   --valid
-good * one - two2 / three3   --valid
-bad = = one1 + two2 - three3 / four4 ;   --syntax error, unexpected '=', expecting ID or '('
-bad = one1 + two2 - three3 / four4   --syntax error, unexpected NEWLINE, expecting ';'
-bad = 1 + - two2 - three3 / four4 ;   --syntax error, unexpected INTEGER, expecting ID or '('
-bad = one1 + two2 ? three3 / four4 ;   --syntax error, unexpected '?', expecting ';'
-bad = one1 + 24 - three3 :   --syntax error, unexpected INTEGER, expecting ID or '('
-bad +- delta   --syntax error, unexpected '-', expecting ID or '('
-bad + - delta   --syntax error, unexpected '-', expecting ID or '('
-bad / min = fourth ;   --syntax error, unexpected '=', expecting NEWLINE
-bad = a ! b   --syntax error, unexpected '!', expecting ';'
-bad * 2two + 3three   --syntax error, unexpected INTEGER, expecting ID or '('
+good = one1 + two2 - three3 / four4 ; --valid
+good = one1 / two2 * three3 ; --valid
+good = one1 * two2 + three3 ; --valid
+good = ONE + twenty - three3 ; --valid
+good = old * thirty2 / b567 ; --valid
+good * i8766e98e + bignum --valid
+good % a4 + bignum --valid
+good * one - two2 / three3 --valid
+good = four4 * two2 * three3 ; --valid
+good * (one + two) * three --valid
+good * one + two * three / four - five + six --valid
+good * one - two2 / three3 --valid
+bad = = one1 + two2 - three3 / four4 ; --syntax error, unexpected '=', expecting ID or '('
+bad = one1 + two2 - three3 / four4 --syntax error, unexpected NEWLINE, expecting ';'
+bad = 1 + - two2 - three3 / four4 ; --syntax error, unexpected INTEGER, expecting ID or '('
+bad = one1 + two2 ? three3 / four4 ; --syntax error, unexpected '?', expecting ';'
+bad = one1 + 24 - three3 : --syntax error, unexpected INTEGER, expecting ID or '('
+bad +- delta --syntax error, unexpected '-', expecting ID or '('
+bad + - delta --syntax error, unexpected '-', expecting ID or '('
+bad / min = fourth ; --syntax error, unexpected '=', expecting NEWLINE
+bad = a ! b --syntax error, unexpected '!', expecting ';'
+bad * 2two + 3three --syntax error, unexpected INTEGER, expecting ID or '('
 ```
 
 Therefore, to test my parser on an abritrary file 'file.txt', run
@@ -75,7 +75,7 @@ Input is received from standard input and ouput goes to standard output.
 This allows for flexability on the user's end, allowing him to redirect them
 as he may desire.
 
-A valid statement, in the output, is appended on its line with "   --valid".
+A valid statement, in the output, is appended on its line with " --valid".
 An invalid statement, in the output, is appended on its line with a syntax error message
 explaining the first error detected.
 
@@ -95,9 +95,9 @@ For this reason, that I modified the code, the Bison and Flex source code are pr
 While they are not accepted in valid statements, INTEGER tokens are detected by the scanner,
 which leads to better error messages. For example,
 ```bash
-bad = one1 + 24 - three3 :   --syntax error, unexpected INTEGER, expecting ID or '('
+bad = one1 + 24 - three3 : --syntax error, unexpected INTEGER, expecting ID or '('
 ```
-identifies that an unexpected INTEGER was printed, not just that an unexpected '2' was detected.
+identifies that an unexpected INTEGER was detected, not just that an unexpected '2' was detected.
 
 
 ## KNOWN DEFICIENCIES OR BUGS
